@@ -143,5 +143,36 @@ describe('Node/JS Utilify', () => {
       };
       func(1, 2);
     });
+    it('removeDuplicates', (done) => {
+      var arr = Utilify.removeDuplicates([2, 2, 2]);
+      arr.length.should.equal(1);
+      arr[0].should.equal(2);
+
+      var arr = Utilify.removeDuplicates([2, 2, 2, 3, 3]);
+      arr.length.should.equal(2);
+      arr[0].should.equal(2);
+      arr[1].should.equal(3);
+      done();
+    });
+    it('EventManager', (done) => {
+      var obj1 = { a: 10 };
+      var obj2 = { b: 20 };
+      var data = { eve: 'Util' };
+      var data2 = { eve: 'Util2' };
+      var respFunc = (resp) => {
+        resp.should.equal(data);
+      };
+      var resp2Func = (resp) => {
+        resp.should.equal(data2);
+      };
+      var arr = Utilify.EventManager.listenTo(obj1, 'Util', respFunc);
+      Utilify.EventManager.trigger(obj1, 'Util', data);
+      Utilify.EventManager.off(obj1, 'Util', respFunc);
+      Utilify.EventManager.trigger(obj1, 'Util', {});
+      Utilify.EventManager.once(obj2, 'Util', resp2Func);
+      Utilify.EventManager.trigger(obj1, 'Util', data2);
+      Utilify.EventManager.trigger(obj1, 'Util', {});
+      done();
+    });
   });
 });

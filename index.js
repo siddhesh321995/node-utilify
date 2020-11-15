@@ -1,3 +1,6 @@
+/**
+ * Null value for uuid
+ */
 const UUID_NIL = '00000000-0000-0000-0000-000000000000';
 
 /**
@@ -93,10 +96,18 @@ const deepCopy = (copy, data) => {
   return copy;
 };
 
+/**
+ * Returns clonned object from given object
+ * @param {any} data Source object.
+ */
 const clone = (data) => {
   return deepCopy({}, data);
 };
 
+/**
+ * Generator function for defaults in a class constructor.
+ * @param {any} attr Default Object attribute
+ */
 const defaultsGenerator = (attr = {}) => {
   return (data) => {
     return Object.assign({}, attr, data);
@@ -177,14 +188,34 @@ EventManager.off = function (context, eventName, callback) {
   }
 };
 
+/**
+ * Returns true if parameter is number.
+ * @param {any} item parameter to check.
+ */
 const isNumber = (item) => { return typeof item == 'number'; };
 
+/**
+ * Returns true if parameter is function.
+ * @param {any} item parameter to check.
+ */
 const isFunction = (item) => { return typeof item == 'function'; };
 
+/**
+ * Returns true if parameter is string.
+ * @param {any} item parameter to check.
+ */
 const isString = (item) => { return typeof item == 'string'; };
 
+/**
+ * Returns true if parameter is boolean.
+ * @param {any} item parameter to check.
+ */
 const isBoolean = (item) => { return typeof item == 'boolean'; };
 
+/**
+ * Returns true if parameter is an array.
+ * @param {any} item parameter to check.
+ */
 const isArray = (item) => {
   if (typeof Array.isArray == 'function') {
     return Array.isArray(item);
@@ -210,12 +241,13 @@ var argumentsToArray = function (args) {
 /**
 * Removes duplicates elements in array.
 *
-* @return     {Array<any>}  Duplicates removed array.
+* @param      {Array<any>}  arr    Array with duplicate items
+* @return     {Array<any>}  Array without duplicate items.
 */
 var removeDuplicates = function (arr) {
   var retArr = [];
   arr.forEach(function (elem) {
-    if (!retArr.indexOf(elem) != -1) {
+    if (retArr.indexOf(elem) == -1) {
       retArr.push(elem);
     }
   });
