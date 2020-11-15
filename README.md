@@ -16,35 +16,13 @@ Setup your Mongo Driver
 ```
 const Utilify = require('node-utilify');
 
-MongoDriver.MongoDBManager.configure({
-    connectionString: 'mongodb+srv://XXXX:XXXX@XXXX-XXXX.mongodb.net/XXXX',
-    hasCert: false,
-    certPath: '',
-    dbName: 'XXXX'
-});
-```
-
-## Usage:
-
-### Get driver instance
-```
-const driver = MongoDriver.MongoDBManager.getInstance();
-```
-
-### Insert documents
-```
-await driver.insertDocProm({ 'id': 1, 'string': 'abc', 'number': 10 }, collectionName);
-```
-
-### Fetch documents
-```
-await driver.getDocumentsByProm(collectionName, { 'id': 1 });
+Utilify.isArray([]); // true
 ```
 
 ## Complete Documentation
-[Click here](DOCUMENTATION.md) to checkout complete documentation or View Documentation page [here](https://siddhesh321995.github.io/mongo-driver/)
+[Click here](DOCUMENTATION.md) to checkout complete documentation or View Documentation page [here](https://siddhesh321995.github.io/node-utilify/)
 
 ## Features:
-- Supports Insert, Fetch, Delete, Update document etc functionality.
-- Simple light weight driver for your mongodb.
-- Only 1 dependency.
+- Data type check functions.
+- EnumGenerator, defaultsGenerator functions.
+- 0 Dependancy.

@@ -1,92 +1,42 @@
 const should = require('should');
+const assert = require('assert');
 const Utilify = require('./index');
 
 describe('Node/JS Utilify', () => {
-  describe('is Functions', () => {
+  describe('Is Functions', () => {
     describe('Array', () => {
-      it('is Array true', (done) => {
+      it('isArray', (done) => {
         Utilify.isArray([]).should.equal(true);
-        done();
-      });
-      it('is Array object false', (done) => {
         Utilify.isArray({}).should.equal(false);
-        done();
-      });
-      it('is Array boolean false', (done) => {
         Utilify.isArray(true).should.equal(false);
-        done();
-      });
-      it('is Array string false', (done) => {
         Utilify.isArray('[]').should.equal(false);
-        done();
-      });
-      it('is Array number false', (done) => {
         Utilify.isArray(10).should.equal(false);
-        done();
-      });
-      it('is Array function false', (done) => {
         Utilify.isArray(() => { }).should.equal(false);
         done();
       });
     });
 
     describe('Number', () => {
-      it('is Number 5 true', (done) => {
+      it('isNumber', (done) => {
         Utilify.isNumber(5).should.equal(true);
-        done();
-      });
-      it('is Number NaN true', (done) => {
         Utilify.isNumber('a5' * 5).should.equal(true);
-        done();
-      });
-      it('is Number object false', (done) => {
         Utilify.isNumber({}).should.equal(false);
-        done();
-      });
-      it('is Number boolean false', (done) => {
         Utilify.isNumber(true).should.equal(false);
-        done();
-      });
-      it('is Number string false', (done) => {
         Utilify.isNumber('[]').should.equal(false);
-        done();
-      });
-      it('is Number array false', (done) => {
         Utilify.isNumber([]).should.equal(false);
-        done();
-      });
-      it('is Number function false', (done) => {
         Utilify.isNumber(() => { }).should.equal(false);
         done();
       });
     });
 
     describe('Function', () => {
-      it('is Function 5 true', (done) => {
+      it('isFunction', (done) => {
         Utilify.isFunction(() => { }).should.equal(true);
-        done();
-      });
-      it('is Function NaN false', (done) => {
         Utilify.isFunction('a5' * 5).should.equal(false);
-        done();
-      });
-      it('is Function object false', (done) => {
         Utilify.isFunction({}).should.equal(false);
-        done();
-      });
-      it('is Function boolean false', (done) => {
         Utilify.isFunction(true).should.equal(false);
-        done();
-      });
-      it('is Function string false', (done) => {
         Utilify.isFunction('[]').should.equal(false);
-        done();
-      });
-      it('is Function array false', (done) => {
         Utilify.isFunction([]).should.equal(false);
-        done();
-      });
-      it('is Function number false', (done) => {
         Utilify.isFunction(10).should.equal(false);
         done();
       });
@@ -95,29 +45,11 @@ describe('Node/JS Utilify', () => {
     describe('String', () => {
       it('is Function 5 true', (done) => {
         Utilify.isString('abc').should.equal(true);
-        done();
-      });
-      it('is Function NaN false', (done) => {
         Utilify.isString('a5' * 5).should.equal(false);
-        done();
-      });
-      it('is Function object false', (done) => {
         Utilify.isString({}).should.equal(false);
-        done();
-      });
-      it('is Function boolean false', (done) => {
         Utilify.isString(true).should.equal(false);
-        done();
-      });
-      it('is Function function false', (done) => {
         Utilify.isString(() => { }).should.equal(false);
-        done();
-      });
-      it('is Function array false', (done) => {
         Utilify.isString([]).should.equal(false);
-        done();
-      });
-      it('is Function number false', (done) => {
         Utilify.isString(10).should.equal(false);
         done();
       });
@@ -126,32 +58,90 @@ describe('Node/JS Utilify', () => {
     describe('Boolean', () => {
       it('is Boolean 5 true', (done) => {
         Utilify.isBoolean(true).should.equal(true);
-        done();
-      });
-      it('is Boolean NaN false', (done) => {
         Utilify.isBoolean('a5' * 5).should.equal(false);
-        done();
-      });
-      it('is Boolean object false', (done) => {
         Utilify.isBoolean({}).should.equal(false);
-        done();
-      });
-      it('is Boolean string false', (done) => {
         Utilify.isBoolean('true').should.equal(false);
-        done();
-      });
-      it('is Boolean function false', (done) => {
         Utilify.isBoolean(() => { }).should.equal(false);
-        done();
-      });
-      it('is Boolean array false', (done) => {
         Utilify.isBoolean([]).should.equal(false);
-        done();
-      });
-      it('is Boolean number false', (done) => {
         Utilify.isBoolean(10).should.equal(false);
         done();
       });
+    });
+  });
+
+  describe('Util functions', () => {
+    it('EnumGenerator', (done) => {
+      const enumObj = Utilify.EnumGenerator({ 1: 'Yes', 2: 'No' });
+      enumObj[1].should.equal('Yes');
+      enumObj[2].should.equal('No');
+      enumObj['Yes'].should.equal(1);
+      enumObj['No'].should.equal(2);
+      done();
+    });
+    it('getCurrentEpochTime', (done) => {
+      const enumObj = Utilify.getCurrentEpochTime();
+      (typeof enumObj == 'number').should.equal(true);
+      done();
+    });
+    it('CacheMgr', (done) => {
+      Utilify.CacheMgr.set('key', 10);
+      Utilify.CacheMgr.get('key').should.equal(10);
+      Utilify.CacheMgr.remove('key');
+      should.equal(Utilify.CacheMgr.get('key'), void 0);
+      Utilify.CacheMgr.set('key1', 10);
+      Utilify.CacheMgr.set('key2', 20);
+      Utilify.CacheMgr.clearAll();
+      should.equal(Utilify.CacheMgr.get('key1'), void 0);
+      should.equal(Utilify.CacheMgr.get('key2'), void 0);
+      done();
+    });
+    it('copy', (done) => {
+      var a = {};
+      var b = { a: 10 };
+      Utilify.copy(a, b);
+      a.a.should.equal(10);
+      assert.notStrictEqual(a, b);
+      done();
+    });
+    it('deepCopy', (done) => {
+      var a = {};
+      var b = { a: 10 };
+      b['c'] = b;
+      Utilify.deepCopy(a, b);
+      a.a.should.equal(10);
+      assert.notStrictEqual(a, b);
+      done();
+    });
+    it('clone', (done) => {
+      var b = { a: 10 };
+      b['c'] = b;
+      var a = Utilify.clone(b);
+      assert.notStrictEqual(a, b);
+      done();
+    });
+    it('defaultsGenerator', (done) => {
+      var def = Utilify.defaultsGenerator({
+        id: 0,
+        name: 'abc'
+      });
+      var vals = def({ name: 'sid' });
+      vals.name.should.equal('sid');
+      vals.id.should.equal(0);
+
+      var vals2 = def({ id: 1 });
+      vals2.name.should.equal('abc');
+      vals2.id.should.equal(1);
+      done();
+    });
+    it('argumentsToArray', function (done) {
+      var func = function () {
+        var arr = Utilify.argumentsToArray(arguments);
+        Array.isArray(arr).should.equal(true);
+        arr[0].should.equal(1);
+        arr[1].should.equal(2);
+        done();
+      };
+      func(1, 2);
     });
   });
 });

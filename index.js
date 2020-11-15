@@ -3,11 +3,16 @@ const UUID_NIL = '00000000-0000-0000-0000-000000000000';
 /**
  * Generates a Enum class
  * @param {{[key:number]:string}} attr Valid enum data
+ * @returns {{[key:number]:string, [key:string]:number}} attr Valid enum data
  */
 const EnumGenerator = (attr) => {
   for (var key in attr) {
     if (attr.hasOwnProperty(key)) {
-      attr[attr[key]] = key;
+      if (!isNaN(Number(key))) {
+        attr[attr[key]] = Number(key);
+      } else {
+        attr[attr[key]] = key;
+      }
     }
   }
   return attr;
@@ -61,7 +66,8 @@ const CacheMgr = {
  * @param {any} data Source object.
  */
 const copy = (copy, data) => {
-  return data = Object.assign(copy, data);
+  data = Object.assign(copy, data);
+  return data;
 };
 
 /**
@@ -74,7 +80,8 @@ const deepCopy = (copy, data) => {
     if (data.hasOwnProperty(key)) {
       // Same reference break
       if (data[key] == data) {
-        return data;
+        copy[key] = data;
+        return copy;
       }
       if (typeof data[key] == 'object') {
         copy[key] = deepCopy({}, data[key]);
@@ -83,7 +90,7 @@ const deepCopy = (copy, data) => {
       }
     }
   }
-  return data;
+  return copy;
 };
 
 const clone = (data) => {
@@ -92,7 +99,7 @@ const clone = (data) => {
 
 const defaultsGenerator = (attr = {}) => {
   return (data) => {
-    return copy(data, attr);
+    return Object.assign({}, attr, data);
   };
 };
 
