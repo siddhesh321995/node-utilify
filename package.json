@@ -1,0 +1,31 @@
+{
+  "name": "node-utilify",
+  "version": "1.0.0",
+  "description": "Utility for your node JS application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhesh321995/node-utilify.git"
+  },
+  "engines": {
+    "node": "12.16.1"
+  },
+  "keywords": [
+    "Util",
+    "Utility",
+    "Node"
+  ],
+  "author": "Siddhesh Kulkarni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siddhesh321995/node-utilify/issues"
+  },
+  "homepage": "https://github.com/siddhesh321995/node-utilify#readme",
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "should": "^13.2.3"
+  }
+}
