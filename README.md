@@ -37,7 +37,7 @@ const defaultsFnc = Utilify.defaultsGenerator({id:1,name:'Sidd'});
 console.log(defaultsFnc({name:'JS'})); // {id:1,name:'JS'}
 ```
 ```
-const defaultsFnc = Utilify.CacheMgr.set('key1', 10);
+Utilify.CacheMgr.set('key1', 10);
 console.log(Utilify.CacheMgr.get('key1')); // 10
 Utilify.CacheMgr.remove('key1');
 console.log(Utilify.CacheMgr.get('key1')); // undefined
