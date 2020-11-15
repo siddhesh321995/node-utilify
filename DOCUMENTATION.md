@@ -1,35 +1,54 @@
 ### Table of Contents
 
--   [EnumGenerator][1]
-    -   [Parameters][2]
--   [getCurrentEpochTime][3]
--   [CacheMgr][4]
-    -   [set][5]
-        -   [Parameters][6]
-    -   [get][7]
-        -   [Parameters][8]
-    -   [remove][9]
-        -   [Parameters][10]
-    -   [clearAll][11]
--   [copy][12]
-    -   [Parameters][13]
--   [deepCopy][14]
-    -   [Parameters][15]
--   [defaultsGenerator][16]
-    -   [Parameters][17]
--   [EventManager][18]
-    -   [listenTo][19]
-        -   [Parameters][20]
-    -   [once][21]
-        -   [Parameters][22]
-    -   [trigger][23]
-        -   [Parameters][24]
-    -   [off][25]
-        -   [Parameters][26]
--   [argumentsToArray][27]
-    -   [Parameters][28]
--   [removeDuplicates][29]
-    -   [Parameters][30]
+-   [UUID_NIL][1]
+-   [EnumGenerator][2]
+    -   [Parameters][3]
+-   [getCurrentEpochTime][4]
+-   [CacheMgr][5]
+    -   [set][6]
+        -   [Parameters][7]
+    -   [get][8]
+        -   [Parameters][9]
+    -   [remove][10]
+        -   [Parameters][11]
+    -   [clearAll][12]
+-   [copy][13]
+    -   [Parameters][14]
+-   [deepCopy][15]
+    -   [Parameters][16]
+-   [clone][17]
+    -   [Parameters][18]
+-   [defaultsGenerator][19]
+    -   [Parameters][20]
+-   [EventManager][21]
+    -   [listenTo][22]
+        -   [Parameters][23]
+    -   [once][24]
+        -   [Parameters][25]
+    -   [trigger][26]
+        -   [Parameters][27]
+    -   [off][28]
+        -   [Parameters][29]
+-   [isNumber][30]
+    -   [Parameters][31]
+-   [isFunction][32]
+    -   [Parameters][33]
+-   [isString][34]
+    -   [Parameters][35]
+-   [isBoolean][36]
+    -   [Parameters][37]
+-   [isArray][38]
+    -   [Parameters][39]
+-   [argumentsToArray][40]
+    -   [Parameters][41]
+-   [removeDuplicates][42]
+    -   [Parameters][43]
+
+## UUID_NIL
+
+Null value for uuid
+
+Type: [string][44]
 
 ## EnumGenerator
 
@@ -53,7 +72,7 @@ Sets cache value
 
 #### Parameters
 
--   `key` **[string][31]** Key of the value
+-   `key` **[string][44]** Key of the value
 -   `val` **any** Cached value
 
 ### get
@@ -62,7 +81,7 @@ Gets cached value
 
 #### Parameters
 
--   `key` **[string][31]** Key of the value
+-   `key` **[string][44]** Key of the value
 
 ### remove
 
@@ -70,7 +89,7 @@ Removes given cached value
 
 #### Parameters
 
--   `key` **[string][31]** Key of the value
+-   `key` **[string][44]** Key of the value
 
 ### clearAll
 
@@ -94,6 +113,14 @@ Deep clones all properties from data to copy object.
 -   `copy` **any** Target object.
 -   `data` **any** Source object.
 
+## clone
+
+Returns clonned object from given object
+
+### Parameters
+
+-   `data` **any** Source object.
+
 ## defaultsGenerator
 
 Generator function for defaults in a class constructor.
@@ -104,7 +131,8 @@ Generator function for defaults in a class constructor.
 
 ## EventManager
 
-Manges events.
+Custom event manager.
+Scope based.
 
 Returns **Class** A static class / namespace
 
@@ -114,9 +142,9 @@ Adds an event listener on given context with given event name and callback.
 
 #### Parameters
 
--   `context` **[Object][32]** The context
--   `eventName` **[string][31]** The event name
--   `callback` **[Function][33]** The callback
+-   `context` **[Object][45]** The context
+-   `eventName` **[string][44]** The event name
+-   `callback` **[Function][46]** The callback
 
 ### once
 
@@ -124,9 +152,9 @@ Adds an event listener on given context with given event name and callback but r
 
 #### Parameters
 
--   `context` **[Object][32]** The context
--   `eventName` **[string][31]** The event name
--   `callback` **[Function][33]** The callback
+-   `context` **[Object][45]** The context
+-   `eventName` **[string][44]** The event name
+-   `callback` **[Function][46]** The callback
 
 ### trigger
 
@@ -134,8 +162,8 @@ Triggers given event on given context with data.
 
 #### Parameters
 
--   `context` **[Object][32]** The context
--   `eventName` **[string][31]** The event name
+-   `context` **[Object][45]** The context
+-   `eventName` **[string][44]** The event name
 -   `data` **ANY** The data
 
 ### off
@@ -144,9 +172,49 @@ Removes an event listener if no callback provided, all events will be removed on
 
 #### Parameters
 
--   `context` **[Object][32]** The context
--   `eventName` **[string][31]** The event name
--   `callback` **[Function][33]** The callback (optional)
+-   `context` **[Object][45]** The context
+-   `eventName` **[string][44]** The event name
+-   `callback` **[Function][46]** The callback (optional)
+
+## isNumber
+
+Returns true if parameter is number.
+
+### Parameters
+
+-   `item` **any** parameter to check.
+
+## isFunction
+
+Returns true if parameter is function.
+
+### Parameters
+
+-   `item` **any** parameter to check.
+
+## isString
+
+Returns true if parameter is string.
+
+### Parameters
+
+-   `item` **any** parameter to check.
+
+## isBoolean
+
+Returns true if parameter is boolean.
+
+### Parameters
+
+-   `item` **any** parameter to check.
+
+## isArray
+
+Returns true if parameter is an array.
+
+### Parameters
+
+-   `item` **any** parameter to check.
 
 ## argumentsToArray
 
@@ -156,7 +224,7 @@ Converts type arguments into array, with same values
 
 -   `args` **argument** The arguments
 
-Returns **[Array][34]&lt;any>** Array type arguments
+Returns **[Array][47]&lt;any>** Array type arguments
 
 ## removeDuplicates
 
@@ -164,74 +232,100 @@ Removes duplicates elements in array.
 
 ### Parameters
 
--   `arr` **[Array][34]&lt;any>** Array with duplicate items
+-   `arr` **[Array][47]&lt;any>** Array with duplicate items
 
-Returns **[Array][34]&lt;any>** Array without duplicate items.
+Returns **[Array][47]&lt;any>** Array without duplicate items.
 
-[1]: #enumgenerator
+[1]: #uuid_nil
 
-[2]: #parameters
+[2]: #enumgenerator
 
-[3]: #getcurrentepochtime
+[3]: #parameters
 
-[4]: #cachemgr
+[4]: #getcurrentepochtime
 
-[5]: #set
+[5]: #cachemgr
 
-[6]: #parameters-1
+[6]: #set
 
-[7]: #get
+[7]: #parameters-1
 
-[8]: #parameters-2
+[8]: #get
 
-[9]: #remove
+[9]: #parameters-2
 
-[10]: #parameters-3
+[10]: #remove
 
-[11]: #clearall
+[11]: #parameters-3
 
-[12]: #copy
+[12]: #clearall
 
-[13]: #parameters-4
+[13]: #copy
 
-[14]: #deepcopy
+[14]: #parameters-4
 
-[15]: #parameters-5
+[15]: #deepcopy
 
-[16]: #defaultsgenerator
+[16]: #parameters-5
 
-[17]: #parameters-6
+[17]: #clone
 
-[18]: #eventmanager
+[18]: #parameters-6
 
-[19]: #listento
+[19]: #defaultsgenerator
 
 [20]: #parameters-7
 
-[21]: #once
+[21]: #eventmanager
 
-[22]: #parameters-8
+[22]: #listento
 
-[23]: #trigger
+[23]: #parameters-8
 
-[24]: #parameters-9
+[24]: #once
 
-[25]: #off
+[25]: #parameters-9
 
-[26]: #parameters-10
+[26]: #trigger
 
-[27]: #argumentstoarray
+[27]: #parameters-10
 
-[28]: #parameters-11
+[28]: #off
 
-[29]: #removeduplicates
+[29]: #parameters-11
 
-[30]: #parameters-12
+[30]: #isnumber
 
-[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[31]: #parameters-12
 
-[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[32]: #isfunction
 
-[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[33]: #parameters-13
 
-[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[34]: #isstring
+
+[35]: #parameters-14
+
+[36]: #isboolean
+
+[37]: #parameters-15
+
+[38]: #isarray
+
+[39]: #parameters-16
+
+[40]: #argumentstoarray
+
+[41]: #parameters-17
+
+[42]: #removeduplicates
+
+[43]: #parameters-18
+
+[44]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[45]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[46]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[47]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

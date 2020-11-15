@@ -2,7 +2,7 @@
 Utility for your node JS application.
 
 [![Build Status](https://travis-ci.com/siddhesh321995/node-utilify.svg?branch=main)](https://travis-ci.com/siddhesh321995/node-utilify)
-![Node.js CI](https://github.com/siddhesh321995/node-utilify/workflows/Node.js%20CI/badge.svg?branch=main)
+![Node.js CI](https://github.com/siddhesh321995/node-utilify/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/siddhesh321995/node-utilify/badge.svg?branch=main)](https://coveralls.io/github/siddhesh321995/node-utilify?branch=main)
 
 ## Installation:

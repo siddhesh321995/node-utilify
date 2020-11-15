@@ -115,7 +115,8 @@ const defaultsGenerator = (attr = {}) => {
 };
 
 /**
- * Manges events.
+ * Custom event manager.
+ * Scope based.
  *
  * @class      EventManager (name)
  * @return     {Class}  A static class / namespace
