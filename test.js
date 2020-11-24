@@ -174,5 +174,12 @@ describe('Node/JS Utilify', () => {
       Utilify.EventManager.trigger(obj1, 'Util', {});
       done();
     });
+    it('Ajax', (done) => {
+      should.equal(typeof Utilify.Ajax.put == 'function', true);
+      should.equal(typeof Utilify.Ajax.get == 'function', true);
+      should.equal(typeof Utilify.Ajax.post == 'function', true);
+      should.equal(typeof Utilify.Ajax.delete == 'function', true);
+      done();
+    });
   });
 });
