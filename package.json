@@ -1,6 +1,6 @@
 {
   "name": "node-utilify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utility for your node JS application",
   "main": "index.js",
   "scripts": {

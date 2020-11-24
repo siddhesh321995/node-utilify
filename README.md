@@ -42,6 +42,12 @@ console.log(Utilify.CacheMgr.get('key1')); // 10
 Utilify.CacheMgr.remove('key1');
 console.log(Utilify.CacheMgr.get('key1')); // undefined
 ```
+```
+Utilify.Ajax.post('https://reqres.in/api/users', {
+    name: "paul rudd",
+    movies: ["Role Models"]
+}).then(console.log).catch(console.warn);
+```
 
 ## Complete Documentation
 [Click here](DOCUMENTATION.md) to checkout complete documentation or View Documentation page [here](https://siddhesh321995.github.io/node-utilify/)
@@ -53,3 +59,4 @@ console.log(Utilify.CacheMgr.get('key1')); // undefined
 
 ## Help us expand:
 Let me know in issues/github page or on email which javascript functions to include in next release.
+[Click here](Contributors.md) for contributors to this library.
