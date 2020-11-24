@@ -17,19 +17,17 @@ Or directly on your browser, simply download your file from the following:
 <script type="application/javascript" src="utilify.js"></script>
 <script type="application/javascript" src="utilify.min.js"></script>
 ```
-
-Setup your Mongo Driver
-```
-const Utilify = require('node-utilify');
-
-Utilify.isArray([]); // true
-```
-
-## Recent addition in the library
+## Recent features added in the library
 - Ajax: XHR wrapper for frontend.
 - EventManager: Custom event manager.
 
-## Some sample functions
+## Some sample utility functions
+```
+const Utilify = require('node-utilify');
+```
+```
+Utilify.isArray([]); // true
+```
 ```
 const httpStatusCodes = Utilify.EnumGenerator({505:'Internal Server Error',404: 'Not Found'});
 
@@ -57,13 +55,14 @@ Utilify.Ajax.post('https://reqres.in/api/users', {
 ```
 
 ## Complete Documentation
-[Click here](DOCUMENTATION.md) to checkout complete documentation or View Documentation page [here](https://siddhesh321995.github.io/node-utilify/)
+Checkout [DOCUMENTATION.md](DOCUMENTATION.md) for complete documentation or View Documentation online at [https://siddhesh321995.github.io/node-utilify/](https://siddhesh321995.github.io/node-utilify/)
 
-## Features:
+## All Features:
 - Data type check functions.
+- Frontend XHR wrapper.
 - EnumGenerator, defaultsGenerator functions.
 - 0 Dependancy.
 
 ## Help us expand:
 Let me know in issues/github page or on email which javascript functions to include in next release.
-[Click here](Contributors.md) for contributors to this library.
+Check all the [Contributors](Contributors.md) to this library.
