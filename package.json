@@ -1,6 +1,6 @@
 {
   "name": "node-utilify",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Utility for your node/frontend application",
   "main": "src/index.js",
   "scripts": {

@@ -328,7 +328,9 @@
   </div>
   
 
-  <p>Null value for uuid</p>
+  <p>Null value for uuid.
+Database type is uuid/guid.
+Value is '00000000-0000-0000-0000-000000000000'</p>
 
     <div class='pre p1 fill-light mt0'>UUID_NIL</div>
   
@@ -402,8 +404,9 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>attr</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>attr</span> <code class='quiet'>(EnumInput)</code>
+	    Valid enum data
+
           </div>
           
         </div>
@@ -414,11 +417,27 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>JSEnum</code>:
+        JavaScript compatible enum class.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> enumObj = Utilify.EnumGenerator({ <span class="hljs-number">1</span>: <span class="hljs-string">'Yes'</span>, <span class="hljs-number">2</span>: <span class="hljs-string">'No'</span> });
+enumObj[<span class="hljs-number">1</span>] <span class="hljs-comment">// 'Yes'</span>
+enumObj[<span class="hljs-string">'Yes'</span>] <span class="hljs-comment">// 1</span></pre>
+    
   
 
   
@@ -464,6 +483,14 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        current time in epoch format
+
+      
+    
+  
 
   
 
@@ -498,7 +525,7 @@
 
   <p>Cache manager, stores data in memory.</p>
 
-    <div class='pre p1 fill-light mt0'>CacheMgr</div>
+    <div class='pre p1 fill-light mt0'>new CacheMgr()</div>
   
   
 
@@ -519,6 +546,14 @@
 
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>CacheMgr.set(<span class="hljs-string">'key1'</span>, <span class="hljs-number">1000</span>);
+CacheMgr.get(<span class="hljs-string">'key1'</span>); <span class="hljs-comment">// 1000</span>
+CacheMgr.remove(<span class="hljs-string">'key1'</span>);</pre>
+    
   
 
   
@@ -539,7 +574,7 @@
 
   <p>Sets cache value</p>
 
-    <div class='pre p1 fill-light mt0'>set(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, val: any)</div>
+    <div class='pre p1 fill-light mt0'>set(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, val: T): T</div>
   
   
 
@@ -565,7 +600,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>val</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>val</span> <code class='quiet'>(T)</code>
 	    Cached value
 
           </div>
@@ -578,11 +613,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>T</code>:
+        Cached value.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>CacheMgr.set(<span class="hljs-string">'key'</span>, <span class="hljs-number">1000</span>);</pre>
+    
   
 
   
@@ -611,7 +660,7 @@
 
   <p>Gets cached value</p>
 
-    <div class='pre p1 fill-light mt0'>get(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+    <div class='pre p1 fill-light mt0'>get(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
   
   
 
@@ -641,11 +690,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Cached value.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>CacheMgr.get(<span class="hljs-string">'key'</span>);</pre>
+    
   
 
   
@@ -674,7 +737,7 @@
 
   <p>Removes given cached value</p>
 
-    <div class='pre p1 fill-light mt0'>remove(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+    <div class='pre p1 fill-light mt0'>remove(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
   
   
 
@@ -704,11 +767,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+        undefined.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>CacheMgr.remove(<span class="hljs-string">'key'</span>);</pre>
+    
   
 
   
@@ -737,7 +814,7 @@
 
   <p>Removes all cached values.</p>
 
-    <div class='pre p1 fill-light mt0'>clearAll()</div>
+    <div class='pre p1 fill-light mt0'>clearAll(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
   
   
 
@@ -753,11 +830,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+        undefined.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>CacheMgr.clearAll();</pre>
+    
   
 
   
@@ -818,7 +909,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>copy</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>copy</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    Target object.
 
           </div>
@@ -827,7 +918,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>data</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    Source object.
 
           </div>
@@ -840,11 +931,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        copied object.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>deepCopy({}, {<span class="hljs-attr">a</span>:<span class="hljs-number">10</span>}); <span class="hljs-comment">// {a:10}</span></pre>
+    
   
 
   
@@ -891,7 +996,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>copy</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>copy</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    Target object.
 
           </div>
@@ -900,7 +1005,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>data</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    Source object.
 
           </div>
@@ -913,11 +1018,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        copied object.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>deepCopy({}, {<span class="hljs-attr">a</span>:{<span class="hljs-attr">b</span>:{<span class="hljs-attr">c</span>:<span class="hljs-number">10</span>}}}); <span class="hljs-comment">// {a:{b:{c:10}}}</span></pre>
+    
   
 
   
@@ -964,7 +1083,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+            <span class='code bold'>data</span> <code class='quiet'>(T)</code>
 	    Source object.
 
           </div>
@@ -977,11 +1096,25 @@
   
 
   
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>T</code>:
+        copied object.
 
+      
+    
   
 
   
 
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>clone({}, {<span class="hljs-attr">a</span>:{<span class="hljs-attr">b</span>:{<span class="hljs-attr">c</span>:<span class="hljs-number">10</span>}}}); <span class="hljs-comment">// {a:{b:{c:10}}}</span></pre>
+    
   
 
   
@@ -1028,7 +1161,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>attr</span> <code class='quiet'>(any
+            <span class='code bold'>attr</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
             = <code>{}</code>)</code>
 	    Default Object attribute
 
@@ -1047,6 +1180,16 @@
 
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> def = Utilify.defaultsGenerator({
+  <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'abc'</span>
+});
+<span class="hljs-keyword">var</span> vals = def({ <span class="hljs-attr">name</span>: <span class="hljs-string">'sid'</span> });</pre>
+    
   
 
   
@@ -1093,19 +1236,19 @@ Scope based.</p>
   
 
   
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Class</code>:
-        A static class / namespace
 
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
       
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> arr = EventManager.listenTo(obj1, <span class="hljs-string">'Util'</span>, respFunc);
+EventManager.trigger(obj1, <span class="hljs-string">'Util'</span>, data);
+EventManager.off(obj1, <span class="hljs-string">'Util'</span>, respFunc);</pre>
     
-  
-
-  
-
-  
-
   
 
   
@@ -1899,6 +2042,14 @@ Scope based.</p>
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunc1</span>(<span class="hljs-params"></span>) </span>{
+ myFunc2.apply(<span class="hljs-keyword">this</span>, argumentsToArray(<span class="hljs-built_in">arguments</span>).push(<span class="hljs-number">10</span>));
+}</pre>
+    
+  
 
   
 
@@ -1971,6 +2122,12 @@ Scope based.</p>
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>removeDuplicates([<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>]); <span class="hljs-comment">// [10,20,30]</span></pre>
+    
+  
 
   
 
@@ -2039,7 +2196,7 @@ Scope based.</p>
 
   <p>PUT Request, generally used for adding new record in the database. Uses XMLHttpRequest to make an xhr call.</p>
 
-    <div class='pre p1 fill-light mt0'>put(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: any, onFail: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+    <div class='pre p1 fill-light mt0'>put(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, onFail: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
   
   
 
@@ -2074,16 +2231,18 @@ Scope based.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onSuccess</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onSuccess</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, success callback for put operation.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onFail</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onFail</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, error callback for put operation.
+
           </div>
           
         </div>
@@ -2141,7 +2300,7 @@ Scope based.</p>
 
   <p>GET Request, generally used to fetch items. Uses XMLHttpRequest to make an xhr call.</p>
 
-    <div class='pre p1 fill-light mt0'>get(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, onSuccess: any, onFail: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+    <div class='pre p1 fill-light mt0'>get(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, onSuccess: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, onFail: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
   
   
 
@@ -2167,16 +2326,18 @@ Scope based.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onSuccess</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onSuccess</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, success callback for put operation.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onFail</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onFail</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, error callback for put operation.
+
           </div>
           
         </div>
@@ -2234,7 +2395,7 @@ Scope based.</p>
 
   <p>POST Request, generally used to update items in the database. Uses XMLHttpRequest to make an xhr call.</p>
 
-    <div class='pre p1 fill-light mt0'>post(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: any, onFail: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+    <div class='pre p1 fill-light mt0'>post(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, onFail: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
   
   
 
@@ -2269,16 +2430,18 @@ Scope based.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onSuccess</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onSuccess</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, success callback for put operation.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onFail</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onFail</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, error callback for put operation.
+
           </div>
           
         </div>
@@ -2336,7 +2499,7 @@ Scope based.</p>
 
   <p>DELETE Request, generally used to remove/delete items from the database. Uses XMLHttpRequest to make an xhr call.</p>
 
-    <div class='pre p1 fill-light mt0'>delete(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: any, onFail: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+    <div class='pre p1 fill-light mt0'>delete(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, onSuccess: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, onFail: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
   
   
 
@@ -2371,16 +2534,18 @@ Scope based.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onSuccess</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onSuccess</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, success callback for put operation.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>onFail</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>onFail</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Optional, error callback for put operation.
+
           </div>
           
         </div>

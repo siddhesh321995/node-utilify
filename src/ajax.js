@@ -12,8 +12,8 @@ var Ajax = {
    *
    * @param {string} url URL for given request.
    * @param {Object} data object payload to be sent to server.
-   * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
-   * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @param {Function} onSuccess Optional, success callback for put operation.
+   * @param {Function} onFail Optional, error callback for put operation.
    * @returns {Promise<any>} Promise with response
    * @example Ajax.put('//google.com').then(...).catch(...);
    */
@@ -42,8 +42,8 @@ var Ajax = {
    * @public
    *
    * @param {string} url URL for given request.
-   * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
-   * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @param {Function} onSuccess Optional, success callback for put operation.
+   * @param {Function} onFail Optional, error callback for put operation.
    * @returns {Promise<any>} Promise with response
    * @example Ajax.get('//google.com/users').then(...).catch(...);
    */
@@ -72,8 +72,8 @@ var Ajax = {
    *
    * @param {string} url URL for given request.
    * @param {Object} data object payload to be sent to server.
-   * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
-   * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @param {Function} onSuccess Optional, success callback for put operation.
+   * @param {Function} onFail Optional, error callback for put operation.
    * @returns {Promise<any>} Promise with response
    * @example Ajax.post('//google.com/users').then(...).catch(...);
    */
@@ -103,8 +103,8 @@ var Ajax = {
    * 
    * @param {string} url URL for given request.
    * @param {Object} data object payload to be sent to server.
-   * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
-   * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @param {Function} onSuccess Optional, success callback for put operation.
+   * @param {Function} onFail Optional, error callback for put operation.
    * @returns {Promise<any>} Promise with response
    * @example Ajax.delete('//google.com/users').then(...).catch(...);
    */

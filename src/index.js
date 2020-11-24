@@ -1,14 +1,38 @@
 const Ajax = require('./ajax');
 
 /**
- * Null value for uuid
+ * @typedef {{[key:number]:string}} EnumInput
+ * @interface
+ * @private
+ */
+
+const enumInput = {};
+
+/**
+ * @typedef {{[key:number]:string, [key:string]:number}} JSEnum
+ * @interface
+ * @private
+ */
+
+const jSEnum = {};
+
+/**
+ * Null value for uuid.
+ * Database type is uuid/guid.
+ * Value is '00000000-0000-0000-0000-000000000000'
+ * 
+ * @static
  */
 const UUID_NIL = '00000000-0000-0000-0000-000000000000';
 
 /**
  * Generates a Enum class
- * @param {{[key:number]:string}} attr Valid enum data
- * @returns {{[key:number]:string, [key:string]:number}} attr Valid enum data
+ * @param {EnumInput} attr Valid enum data
+ * @returns {JSEnum} JavaScript compatible enum class.
+ * @example
+ * const enumObj = Utilify.EnumGenerator({ 1: 'Yes', 2: 'No' });
+ * enumObj[1] // 'Yes'
+ * enumObj['Yes'] // 1
  */
 const EnumGenerator = (attr) => {
   for (var key in attr) {
@@ -25,6 +49,7 @@ const EnumGenerator = (attr) => {
 
 /**
  * Returns current epoch time in int.
+ * @returns {number} current time in epoch format
  */
 const getCurrentEpochTime = () => {
   const dateObj = new Date();
@@ -35,12 +60,20 @@ let _cache = {};
 
 /**
  * Cache manager, stores data in memory.
+ * @class CacheMgr
+ * @module CacheMgr module
+ * @example 
+ * CacheMgr.set('key1', 1000);
+ * CacheMgr.get('key1'); // 1000
+ * CacheMgr.remove('key1');
  */
 const CacheMgr = {
   /**
    * Sets cache value
    * @param {string} key Key of the value
-   * @param {any} val Cached value
+   * @param {T} val Cached value
+   * @returns {T} Cached value.
+   * @example CacheMgr.set('key', 1000);
    */
   set: (key, val) => {
     return _cache[key] = val;
@@ -48,17 +81,23 @@ const CacheMgr = {
   /**
    * Gets cached value
    * @param {string} key Key of the value
+   * @returns {any} Cached value.
+   * @example CacheMgr.get('key');
    */
   get: (key) => _cache[key],
   /**
    * Removes given cached value
    * @param {string} key Key of the value
+   * @returns {undefined} undefined.
+   * @example CacheMgr.remove('key');
    */
   remove: (key) => {
     delete _cache[key];
   },
   /**
    * Removes all cached values.
+   * @returns {undefined} undefined.
+   * @example CacheMgr.clearAll();
    */
   clearAll: () => {
     _cache = {};
@@ -67,8 +106,11 @@ const CacheMgr = {
 
 /**
  * Copies all properties from data to copy object.
- * @param {any} copy Target object.
- * @param {any} data Source object.
+ * 
+ * @param {Object} copy Target object.
+ * @param {Object} data Source object.
+ * @returns {Object} copied object.
+ * @example deepCopy({}, {a:10}); // {a:10}
  */
 const copy = (copy, data) => {
   data = Object.assign(copy, data);
@@ -77,8 +119,11 @@ const copy = (copy, data) => {
 
 /**
  * Deep clones all properties from data to copy object.
- * @param {any} copy Target object.
- * @param {any} data Source object.
+ * 
+ * @param {Object} copy Target object.
+ * @param {Object} data Source object.
+ * @returns {Object} copied object.
+ * @example deepCopy({}, {a:{b:{c:10}}}); // {a:{b:{c:10}}}
  */
 const deepCopy = (copy, data) => {
   for (let key in data) {
@@ -100,7 +145,9 @@ const deepCopy = (copy, data) => {
 
 /**
  * Returns clonned object from given object
- * @param {any} data Source object.
+ * @param {T} data Source object.
+ * @returns {T} copied object.
+ * @example clone({}, {a:{b:{c:10}}}); // {a:{b:{c:10}}}
  */
 const clone = (data) => {
   return deepCopy({}, data);
@@ -108,7 +155,13 @@ const clone = (data) => {
 
 /**
  * Generator function for defaults in a class constructor.
- * @param {any} attr Default Object attribute
+ * @param {Object} attr Default Object attribute
+ * @example
+ * var def = Utilify.defaultsGenerator({
+ *   id: 0,
+ *   name: 'abc'
+ * });
+ * var vals = def({ name: 'sid' });
  */
 const defaultsGenerator = (attr = {}) => {
   return (data) => {
@@ -121,7 +174,10 @@ const defaultsGenerator = (attr = {}) => {
  * Scope based.
  *
  * @class      EventManager (name)
- * @return     {Class}  A static class / namespace
+ * @example
+ * var arr = EventManager.listenTo(obj1, 'Util', respFunc);
+ * EventManager.trigger(obj1, 'Util', data);
+ * EventManager.off(obj1, 'Util', respFunc);
  */
 var EventManager = {};
 var _handlers = [];
@@ -242,6 +298,10 @@ const isArray = (item) => {
  *
  * @param      {argument}  args    The arguments
  * @return     {Array<any>}      Array type arguments
+ * @example
+ * function myFunc1() {
+ *  myFunc2.apply(this, argumentsToArray(arguments).push(10));
+ * }
  */
 var argumentsToArray = function (args) {
   var retArr = [];
@@ -252,11 +312,13 @@ var argumentsToArray = function (args) {
 };
 
 /**
-* Removes duplicates elements in array.
-*
-* @param      {Array<T>}  arr    Array with items of type T, having duplicate items
-* @return     {Array<T>}  Array without duplicate items.
-*/
+ * Removes duplicates elements in array.
+ *
+ * @param      {Array<T>}  arr    Array with items of type T, having duplicate items
+ * @return     {Array<T>}  Array without duplicate items.
+ * @example
+ * removeDuplicates([10,10,20,20,20,30]); // [10,20,30]
+ */
 var removeDuplicates = function (arr) {
   var retArr = [];
   arr.forEach(function (elem) {

@@ -5,70 +5,85 @@
 -   [UUID_NIL][1]
 -   [EnumGenerator][2]
     -   [Parameters][3]
--   [getCurrentEpochTime][4]
--   [CacheMgr][5]
-    -   [set][6]
-        -   [Parameters][7]
-    -   [get][8]
+    -   [Examples][4]
+-   [getCurrentEpochTime][5]
+-   [CacheMgr][6]
+    -   [Examples][7]
+    -   [set][8]
         -   [Parameters][9]
-    -   [remove][10]
-        -   [Parameters][11]
-    -   [clearAll][12]
--   [copy][13]
-    -   [Parameters][14]
--   [deepCopy][15]
-    -   [Parameters][16]
--   [clone][17]
-    -   [Parameters][18]
--   [defaultsGenerator][19]
+        -   [Examples][10]
+    -   [get][11]
+        -   [Parameters][12]
+        -   [Examples][13]
+    -   [remove][14]
+        -   [Parameters][15]
+        -   [Examples][16]
+    -   [clearAll][17]
+        -   [Examples][18]
+-   [copy][19]
     -   [Parameters][20]
--   [EventManager][21]
-    -   [listenTo][22]
-        -   [Parameters][23]
-    -   [once][24]
-        -   [Parameters][25]
-    -   [trigger][26]
-        -   [Parameters][27]
-    -   [off][28]
-        -   [Parameters][29]
--   [isNumber][30]
-    -   [Parameters][31]
+    -   [Examples][21]
+-   [deepCopy][22]
+    -   [Parameters][23]
+    -   [Examples][24]
+-   [clone][25]
+    -   [Parameters][26]
+    -   [Examples][27]
+-   [defaultsGenerator][28]
+    -   [Parameters][29]
+    -   [Examples][30]
+-   [EventManager][31]
     -   [Examples][32]
--   [isFunction][33]
-    -   [Parameters][34]
-    -   [Examples][35]
--   [isString][36]
-    -   [Parameters][37]
-    -   [Examples][38]
--   [isBoolean][39]
-    -   [Parameters][40]
-    -   [Examples][41]
--   [isArray][42]
-    -   [Parameters][43]
-    -   [Examples][44]
--   [argumentsToArray][45]
-    -   [Parameters][46]
--   [removeDuplicates][47]
+    -   [listenTo][33]
+        -   [Parameters][34]
+    -   [once][35]
+        -   [Parameters][36]
+    -   [trigger][37]
+        -   [Parameters][38]
+    -   [off][39]
+        -   [Parameters][40]
+-   [isNumber][41]
+    -   [Parameters][42]
+    -   [Examples][43]
+-   [isFunction][44]
+    -   [Parameters][45]
+    -   [Examples][46]
+-   [isString][47]
     -   [Parameters][48]
--   [Ajax][49]
-    -   [put][50]
-        -   [Parameters][51]
-        -   [Examples][52]
-    -   [get][53]
-        -   [Parameters][54]
-        -   [Examples][55]
-    -   [post][56]
-        -   [Parameters][57]
-        -   [Examples][58]
-    -   [delete][59]
-        -   [Parameters][60]
-        -   [Examples][61]
+    -   [Examples][49]
+-   [isBoolean][50]
+    -   [Parameters][51]
+    -   [Examples][52]
+-   [isArray][53]
+    -   [Parameters][54]
+    -   [Examples][55]
+-   [argumentsToArray][56]
+    -   [Parameters][57]
+    -   [Examples][58]
+-   [removeDuplicates][59]
+    -   [Parameters][60]
+    -   [Examples][61]
+-   [Ajax][62]
+    -   [put][63]
+        -   [Parameters][64]
+        -   [Examples][65]
+    -   [get][66]
+        -   [Parameters][67]
+        -   [Examples][68]
+    -   [post][69]
+        -   [Parameters][70]
+        -   [Examples][71]
+    -   [delete][72]
+        -   [Parameters][73]
+        -   [Examples][74]
 
 ## UUID_NIL
 
-Null value for uuid
+Null value for uuid.
+Database type is uuid/guid.
+Value is '00000000-0000-0000-0000-000000000000'
 
-Type: [string][62]
+Type: [string][75]
 
 ## EnumGenerator
 
@@ -76,15 +91,35 @@ Generates a Enum class
 
 ### Parameters
 
--   `attr`  
+-   `attr` **EnumInput** Valid enum data
+
+### Examples
+
+```javascript
+const enumObj = Utilify.EnumGenerator({ 1: 'Yes', 2: 'No' });
+enumObj[1] // 'Yes'
+enumObj['Yes'] // 1
+```
+
+Returns **JSEnum** JavaScript compatible enum class.
 
 ## getCurrentEpochTime
 
 Returns current epoch time in int.
 
+Returns **[number][76]** current time in epoch format
+
 ## CacheMgr
 
 Cache manager, stores data in memory.
+
+### Examples
+
+```javascript
+CacheMgr.set('key1', 1000);
+CacheMgr.get('key1'); // 1000
+CacheMgr.remove('key1');
+```
 
 ### set
 
@@ -92,8 +127,16 @@ Sets cache value
 
 #### Parameters
 
--   `key` **[string][62]** Key of the value
--   `val` **any** Cached value
+-   `key` **[string][75]** Key of the value
+-   `val` **T** Cached value
+
+#### Examples
+
+```javascript
+CacheMgr.set('key', 1000);
+```
+
+Returns **T** Cached value.
 
 ### get
 
@@ -101,7 +144,15 @@ Gets cached value
 
 #### Parameters
 
--   `key` **[string][62]** Key of the value
+-   `key` **[string][75]** Key of the value
+
+#### Examples
+
+```javascript
+CacheMgr.get('key');
+```
+
+Returns **any** Cached value.
 
 ### remove
 
@@ -109,11 +160,27 @@ Removes given cached value
 
 #### Parameters
 
--   `key` **[string][62]** Key of the value
+-   `key` **[string][75]** Key of the value
+
+#### Examples
+
+```javascript
+CacheMgr.remove('key');
+```
+
+Returns **[undefined][77]** undefined.
 
 ### clearAll
 
 Removes all cached values.
+
+#### Examples
+
+```javascript
+CacheMgr.clearAll();
+```
+
+Returns **[undefined][77]** undefined.
 
 ## copy
 
@@ -121,8 +188,16 @@ Copies all properties from data to copy object.
 
 ### Parameters
 
--   `copy` **any** Target object.
--   `data` **any** Source object.
+-   `copy` **[Object][78]** Target object.
+-   `data` **[Object][78]** Source object.
+
+### Examples
+
+```javascript
+deepCopy({}, {a:10}); // {a:10}
+```
+
+Returns **[Object][78]** copied object.
 
 ## deepCopy
 
@@ -130,8 +205,16 @@ Deep clones all properties from data to copy object.
 
 ### Parameters
 
--   `copy` **any** Target object.
--   `data` **any** Source object.
+-   `copy` **[Object][78]** Target object.
+-   `data` **[Object][78]** Source object.
+
+### Examples
+
+```javascript
+deepCopy({}, {a:{b:{c:10}}}); // {a:{b:{c:10}}}
+```
+
+Returns **[Object][78]** copied object.
 
 ## clone
 
@@ -139,7 +222,15 @@ Returns clonned object from given object
 
 ### Parameters
 
--   `data` **any** Source object.
+-   `data` **T** Source object.
+
+### Examples
+
+```javascript
+clone({}, {a:{b:{c:10}}}); // {a:{b:{c:10}}}
+```
+
+Returns **T** copied object.
 
 ## defaultsGenerator
 
@@ -147,14 +238,30 @@ Generator function for defaults in a class constructor.
 
 ### Parameters
 
--   `attr` **any** Default Object attribute (optional, default `{}`)
+-   `attr` **[Object][78]** Default Object attribute (optional, default `{}`)
+
+### Examples
+
+```javascript
+var def = Utilify.defaultsGenerator({
+  id: 0,
+  name: 'abc'
+});
+var vals = def({ name: 'sid' });
+```
 
 ## EventManager
 
 Custom event manager.
 Scope based.
 
-Returns **Class** A static class / namespace
+### Examples
+
+```javascript
+var arr = EventManager.listenTo(obj1, 'Util', respFunc);
+EventManager.trigger(obj1, 'Util', data);
+EventManager.off(obj1, 'Util', respFunc);
+```
 
 ### listenTo
 
@@ -162,9 +269,9 @@ Adds an event listener on given context with given event name and callback.
 
 #### Parameters
 
--   `context` **[Object][63]** The context
--   `eventName` **[string][62]** The event name
--   `callback` **[Function][64]** The callback
+-   `context` **[Object][78]** The context
+-   `eventName` **[string][75]** The event name
+-   `callback` **[Function][79]** The callback
 
 ### once
 
@@ -172,9 +279,9 @@ Adds an event listener on given context with given event name and callback but r
 
 #### Parameters
 
--   `context` **[Object][63]** The context
--   `eventName` **[string][62]** The event name
--   `callback` **[Function][64]** The callback
+-   `context` **[Object][78]** The context
+-   `eventName` **[string][75]** The event name
+-   `callback` **[Function][79]** The callback
 
 ### trigger
 
@@ -182,8 +289,8 @@ Triggers given event on given context with data.
 
 #### Parameters
 
--   `context` **[Object][63]** The context
--   `eventName` **[string][62]** The event name
+-   `context` **[Object][78]** The context
+-   `eventName` **[string][75]** The event name
 -   `data` **ANY** The data
 
 ### off
@@ -192,9 +299,9 @@ Removes an event listener if no callback provided, all events will be removed on
 
 #### Parameters
 
--   `context` **[Object][63]** The context
--   `eventName` **[string][62]** The event name
--   `callback` **[Function][64]** The callback (optional)
+-   `context` **[Object][78]** The context
+-   `eventName` **[string][75]** The event name
+-   `callback` **[Function][79]** The callback (optional)
 
 ## isNumber
 
@@ -210,7 +317,7 @@ Returns true if parameter is number.
 var myVar = 10; isNumber(myVar); // true
 ```
 
-Returns **[boolean][65]** 
+Returns **[boolean][80]** 
 
 ## isFunction
 
@@ -226,7 +333,7 @@ Returns true if parameter is function.
 var myVar = "str"; isFunction(myVar); // false
 ```
 
-Returns **[boolean][65]** 
+Returns **[boolean][80]** 
 
 ## isString
 
@@ -242,7 +349,7 @@ Returns true if parameter is string.
 var myVar = "str"; isString(myVar); // true
 ```
 
-Returns **[boolean][65]** 
+Returns **[boolean][80]** 
 
 ## isBoolean
 
@@ -258,7 +365,7 @@ Returns true if parameter is boolean.
 var myVar = 10; isBoolean(myVar); // false
 ```
 
-Returns **[boolean][65]** 
+Returns **[boolean][80]** 
 
 ## isArray
 
@@ -274,7 +381,7 @@ Returns true if parameter is an array.
 var myVar = []; isArray(myVar); // true
 ```
 
-Returns **[boolean][65]** 
+Returns **[boolean][80]** 
 
 ## argumentsToArray
 
@@ -284,7 +391,15 @@ Converts type arguments into array, with same values
 
 -   `args` **argument** The arguments
 
-Returns **[Array][66]&lt;any>** Array type arguments
+### Examples
+
+```javascript
+function myFunc1() {
+ myFunc2.apply(this, argumentsToArray(arguments).push(10));
+}
+```
+
+Returns **[Array][81]&lt;any>** Array type arguments
 
 ## removeDuplicates
 
@@ -292,9 +407,15 @@ Removes duplicates elements in array.
 
 ### Parameters
 
--   `arr` **[Array][66]&lt;T>** Array with items of type T, having duplicate items
+-   `arr` **[Array][81]&lt;T>** Array with items of type T, having duplicate items
 
-Returns **[Array][66]&lt;T>** Array without duplicate items.
+### Examples
+
+```javascript
+removeDuplicates([10,10,20,20,20,30]); // [10,20,30]
+```
+
+Returns **[Array][81]&lt;T>** Array without duplicate items.
 
 ## Ajax
 
@@ -304,10 +425,10 @@ PUT Request, generally used for adding new record in the database. Uses XMLHttpR
 
 #### Parameters
 
--   `url` **[string][62]** URL for given request.
--   `data` **[Object][63]** object payload to be sent to server.
--   `onSuccess`  
--   `onFail`  
+-   `url` **[string][75]** URL for given request.
+-   `data` **[Object][78]** object payload to be sent to server.
+-   `onSuccess` **[Function][79]** Optional, success callback for put operation.
+-   `onFail` **[Function][79]** Optional, error callback for put operation.
 
 #### Examples
 
@@ -315,7 +436,7 @@ PUT Request, generally used for adding new record in the database. Uses XMLHttpR
 Ajax.put('//google.com').then(...).catch(...);
 ```
 
-Returns **[Promise][67]&lt;any>** Promise with response
+Returns **[Promise][82]&lt;any>** Promise with response
 
 ### get
 
@@ -323,9 +444,9 @@ GET Request, generally used to fetch items. Uses XMLHttpRequest to make an xhr c
 
 #### Parameters
 
--   `url` **[string][62]** URL for given request.
--   `onSuccess`  
--   `onFail`  
+-   `url` **[string][75]** URL for given request.
+-   `onSuccess` **[Function][79]** Optional, success callback for put operation.
+-   `onFail` **[Function][79]** Optional, error callback for put operation.
 
 #### Examples
 
@@ -333,7 +454,7 @@ GET Request, generally used to fetch items. Uses XMLHttpRequest to make an xhr c
 Ajax.get('//google.com/users').then(...).catch(...);
 ```
 
-Returns **[Promise][67]&lt;any>** Promise with response
+Returns **[Promise][82]&lt;any>** Promise with response
 
 ### post
 
@@ -341,10 +462,10 @@ POST Request, generally used to update items in the database. Uses XMLHttpReques
 
 #### Parameters
 
--   `url` **[string][62]** URL for given request.
--   `data` **[Object][63]** object payload to be sent to server.
--   `onSuccess`  
--   `onFail`  
+-   `url` **[string][75]** URL for given request.
+-   `data` **[Object][78]** object payload to be sent to server.
+-   `onSuccess` **[Function][79]** Optional, success callback for put operation.
+-   `onFail` **[Function][79]** Optional, error callback for put operation.
 
 #### Examples
 
@@ -352,7 +473,7 @@ POST Request, generally used to update items in the database. Uses XMLHttpReques
 Ajax.post('//google.com/users').then(...).catch(...);
 ```
 
-Returns **[Promise][67]&lt;any>** Promise with response
+Returns **[Promise][82]&lt;any>** Promise with response
 
 ### delete
 
@@ -360,10 +481,10 @@ DELETE Request, generally used to remove/delete items from the database. Uses XM
 
 #### Parameters
 
--   `url` **[string][62]** URL for given request.
--   `data` **[Object][63]** object payload to be sent to server.
--   `onSuccess`  
--   `onFail`  
+-   `url` **[string][75]** URL for given request.
+-   `data` **[Object][78]** object payload to be sent to server.
+-   `onSuccess` **[Function][79]** Optional, success callback for put operation.
+-   `onFail` **[Function][79]** Optional, error callback for put operation.
 
 #### Examples
 
@@ -371,7 +492,7 @@ DELETE Request, generally used to remove/delete items from the database. Uses XM
 Ajax.delete('//google.com/users').then(...).catch(...);
 ```
 
-Returns **[Promise][67]&lt;any>** Promise with response
+Returns **[Promise][82]&lt;any>** Promise with response
 
 [1]: #uuid_nil
 
@@ -379,130 +500,160 @@ Returns **[Promise][67]&lt;any>** Promise with response
 
 [3]: #parameters
 
-[4]: #getcurrentepochtime
+[4]: #examples
 
-[5]: #cachemgr
+[5]: #getcurrentepochtime
 
-[6]: #set
+[6]: #cachemgr
 
-[7]: #parameters-1
+[7]: #examples-1
 
-[8]: #get
+[8]: #set
 
-[9]: #parameters-2
+[9]: #parameters-1
 
-[10]: #remove
+[10]: #examples-2
 
-[11]: #parameters-3
+[11]: #get
 
-[12]: #clearall
+[12]: #parameters-2
 
-[13]: #copy
+[13]: #examples-3
 
-[14]: #parameters-4
+[14]: #remove
 
-[15]: #deepcopy
+[15]: #parameters-3
 
-[16]: #parameters-5
+[16]: #examples-4
 
-[17]: #clone
+[17]: #clearall
 
-[18]: #parameters-6
+[18]: #examples-5
 
-[19]: #defaultsgenerator
+[19]: #copy
 
-[20]: #parameters-7
+[20]: #parameters-4
 
-[21]: #eventmanager
+[21]: #examples-6
 
-[22]: #listento
+[22]: #deepcopy
 
-[23]: #parameters-8
+[23]: #parameters-5
 
-[24]: #once
+[24]: #examples-7
 
-[25]: #parameters-9
+[25]: #clone
 
-[26]: #trigger
+[26]: #parameters-6
 
-[27]: #parameters-10
+[27]: #examples-8
 
-[28]: #off
+[28]: #defaultsgenerator
 
-[29]: #parameters-11
+[29]: #parameters-7
 
-[30]: #isnumber
+[30]: #examples-9
 
-[31]: #parameters-12
+[31]: #eventmanager
 
-[32]: #examples
+[32]: #examples-10
 
-[33]: #isfunction
+[33]: #listento
 
-[34]: #parameters-13
+[34]: #parameters-8
 
-[35]: #examples-1
+[35]: #once
 
-[36]: #isstring
+[36]: #parameters-9
 
-[37]: #parameters-14
+[37]: #trigger
 
-[38]: #examples-2
+[38]: #parameters-10
 
-[39]: #isboolean
+[39]: #off
 
-[40]: #parameters-15
+[40]: #parameters-11
 
-[41]: #examples-3
+[41]: #isnumber
 
-[42]: #isarray
+[42]: #parameters-12
 
-[43]: #parameters-16
+[43]: #examples-11
 
-[44]: #examples-4
+[44]: #isfunction
 
-[45]: #argumentstoarray
+[45]: #parameters-13
 
-[46]: #parameters-17
+[46]: #examples-12
 
-[47]: #removeduplicates
+[47]: #isstring
 
-[48]: #parameters-18
+[48]: #parameters-14
 
-[49]: #ajax
+[49]: #examples-13
 
-[50]: #put
+[50]: #isboolean
 
-[51]: #parameters-19
+[51]: #parameters-15
 
-[52]: #examples-5
+[52]: #examples-14
 
-[53]: #get-1
+[53]: #isarray
 
-[54]: #parameters-20
+[54]: #parameters-16
 
-[55]: #examples-6
+[55]: #examples-15
 
-[56]: #post
+[56]: #argumentstoarray
 
-[57]: #parameters-21
+[57]: #parameters-17
 
-[58]: #examples-7
+[58]: #examples-16
 
-[59]: #delete
+[59]: #removeduplicates
 
-[60]: #parameters-22
+[60]: #parameters-18
 
-[61]: #examples-8
+[61]: #examples-17
 
-[62]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[62]: #ajax
 
-[63]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[63]: #put
 
-[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[64]: #parameters-19
 
-[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[65]: #examples-18
 
-[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[66]: #get-1
 
-[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[67]: #parameters-20
+
+[68]: #examples-19
+
+[69]: #post
+
+[70]: #parameters-21
+
+[71]: #examples-20
+
+[72]: #delete
+
+[73]: #parameters-22
+
+[74]: #examples-21
+
+[75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[76]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[77]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[78]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[79]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[80]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[81]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[82]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
