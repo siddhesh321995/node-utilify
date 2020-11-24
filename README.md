@@ -6,11 +6,17 @@ Utility for your node JS application.
 [![Coverage Status](https://coveralls.io/repos/github/siddhesh321995/node-utilify/badge.svg?branch=main)](https://coveralls.io/github/siddhesh321995/node-utilify?branch=main)
 
 ## Installation:
-
+Using npm
 ```
 npm install node-utilify --save
 ```
-
+Or directly on your browser, simply download your file from the following:
+- [utilify.js](dist/utilify.js) Development version
+- [utilify.min.js](dist/utilify.min.js) Deployment version
+```
+<script type="application/javascript" src="utilify.js"></script>
+<script type="application/javascript" src="utilify.min.js"></script>
+```
 
 Setup your Mongo Driver
 ```

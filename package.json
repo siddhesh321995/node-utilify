@@ -1,6 +1,6 @@
 {
   "name": "node-utilify",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Utility for your node/frontend application",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "npm run babel && npm run browserify && npm run uglifyjs",
     "babel": "babel src -d dist",
     "browserify": "browserify dist/index.js -o dist/utilify.js",
-    "uglifyjs": "uglifyjs --version \"1.0.6\" --compress --mangle --output dist/utilify.min.js -- dist/utilify.js"
+    "uglifyjs": "uglifyjs --compress --mangle --output dist/utilify.min.js -- dist/utilify.js"
   },
   "files": [
     "src",
