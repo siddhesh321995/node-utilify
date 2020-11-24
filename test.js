@@ -1,6 +1,6 @@
 const should = require('should');
 const assert = require('assert');
-const Utilify = require('./index');
+const Utilify = require('./src/index');
 
 describe('Node/JS Utilify', () => {
   describe('Is Functions', () => {

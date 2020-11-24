@@ -1,14 +1,18 @@
 {
   "name": "node-utilify",
-  "version": "1.0.3",
-  "description": "Utility for your node JS application",
-  "main": "index.js",
+  "version": "1.0.6",
+  "description": "Utility for your node/frontend application",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "npm run babel && npm run browserify && npm run uglifyjs",
+    "babel": "babel src -d dist",
+    "browserify": "browserify dist/index.js -o dist/utilify.js",
+    "uglifyjs": "uglifyjs --version \"1.0.6\" --compress --mangle --output dist/utilify.min.js -- dist/utilify.js"
   },
   "files": [
-    "index.js",
-    "ajax.js"
+    "src",
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -29,7 +33,11 @@
   },
   "homepage": "https://github.com/siddhesh321995/node-utilify#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "browserify": "^17.0.0",
     "mocha": "^8.2.1",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "uglify-js": "^3.12.0"
   }
 }

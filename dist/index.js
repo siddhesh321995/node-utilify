@@ -1,16 +1,20 @@
-const Ajax = require('./ajax');
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var Ajax = require('./ajax');
 
 /**
  * Null value for uuid
  */
-const UUID_NIL = '00000000-0000-0000-0000-000000000000';
+var UUID_NIL = '00000000-0000-0000-0000-000000000000';
 
 /**
  * Generates a Enum class
  * @param {{[key:number]:string}} attr Valid enum data
  * @returns {{[key:number]:string, [key:string]:number}} attr Valid enum data
  */
-const EnumGenerator = (attr) => {
+var EnumGenerator = function EnumGenerator(attr) {
   for (var key in attr) {
     if (attr.hasOwnProperty(key)) {
       if (!isNaN(Number(key))) {
@@ -26,41 +30,43 @@ const EnumGenerator = (attr) => {
 /**
  * Returns current epoch time in int.
  */
-const getCurrentEpochTime = () => {
-  const dateObj = new Date();
-  return parseInt((dateObj).getTime() / 1000);
+var getCurrentEpochTime = function getCurrentEpochTime() {
+  var dateObj = new Date();
+  return parseInt(dateObj.getTime() / 1000);
 };
 
-let _cache = {};
+var _cache = {};
 
 /**
  * Cache manager, stores data in memory.
  */
-const CacheMgr = {
+var CacheMgr = {
   /**
    * Sets cache value
    * @param {string} key Key of the value
    * @param {any} val Cached value
    */
-  set: (key, val) => {
+  set: function set(key, val) {
     return _cache[key] = val;
   },
   /**
    * Gets cached value
    * @param {string} key Key of the value
    */
-  get: (key) => _cache[key],
+  get: function get(key) {
+    return _cache[key];
+  },
   /**
    * Removes given cached value
    * @param {string} key Key of the value
    */
-  remove: (key) => {
+  remove: function remove(key) {
     delete _cache[key];
   },
   /**
    * Removes all cached values.
    */
-  clearAll: () => {
+  clearAll: function clearAll() {
     _cache = {};
   }
 };
@@ -70,8 +76,8 @@ const CacheMgr = {
  * @param {any} copy Target object.
  * @param {any} data Source object.
  */
-const copy = (copy, data) => {
-  data = Object.assign(copy, data);
+var copy = function copy(_copy, data) {
+  data = Object.assign(_copy, data);
   return data;
 };
 
@@ -80,15 +86,15 @@ const copy = (copy, data) => {
  * @param {any} copy Target object.
  * @param {any} data Source object.
  */
-const deepCopy = (copy, data) => {
-  for (let key in data) {
+var deepCopy = function deepCopy(copy, data) {
+  for (var key in data) {
     if (data.hasOwnProperty(key)) {
       // Same reference break
       if (data[key] == data) {
         copy[key] = data;
         return copy;
       }
-      if (typeof data[key] == 'object') {
+      if (_typeof(data[key]) == 'object') {
         copy[key] = deepCopy({}, data[key]);
       } else {
         copy[key] = data[key];
@@ -102,7 +108,7 @@ const deepCopy = (copy, data) => {
  * Returns clonned object from given object
  * @param {any} data Source object.
  */
-const clone = (data) => {
+var clone = function clone(data) {
   return deepCopy({}, data);
 };
 
@@ -110,8 +116,10 @@ const clone = (data) => {
  * Generator function for defaults in a class constructor.
  * @param {any} attr Default Object attribute
  */
-const defaultsGenerator = (attr = {}) => {
-  return (data) => {
+var defaultsGenerator = function defaultsGenerator() {
+  var attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  return function (data) {
     return Object.assign({}, attr, data);
   };
 };
@@ -145,10 +153,10 @@ EventManager.listenTo = function (context, eventName, callback) {
  * @param      {Function}  callback   The callback
  */
 EventManager.once = function (context, eventName, callback) {
-  var newCb = (function (data) {
+  var newCb = function (data) {
     callback(data);
     EventManager.off(context, eventName, newCb);
-  }).bind(this);
+  }.bind(this);
   _handlers.push({ "eventName": eventName, "context": context, "callback": newCb });
 };
 
@@ -195,31 +203,39 @@ EventManager.off = function (context, eventName, callback) {
  * Returns true if parameter is number.
  * @param {any} item parameter to check.
  */
-const isNumber = (item) => { return typeof item == 'number'; };
+var isNumber = function isNumber(item) {
+  return typeof item == 'number';
+};
 
 /**
  * Returns true if parameter is function.
  * @param {any} item parameter to check.
  */
-const isFunction = (item) => { return typeof item == 'function'; };
+var isFunction = function isFunction(item) {
+  return typeof item == 'function';
+};
 
 /**
  * Returns true if parameter is string.
  * @param {any} item parameter to check.
  */
-const isString = (item) => { return typeof item == 'string'; };
+var isString = function isString(item) {
+  return typeof item == 'string';
+};
 
 /**
  * Returns true if parameter is boolean.
  * @param {any} item parameter to check.
  */
-const isBoolean = (item) => { return typeof item == 'boolean'; };
+var isBoolean = function isBoolean(item) {
+  return typeof item == 'boolean';
+};
 
 /**
  * Returns true if parameter is an array.
  * @param {any} item parameter to check.
  */
-const isArray = (item) => {
+var isArray = function isArray(item) {
   if (typeof Array.isArray == 'function') {
     return Array.isArray(item);
   } else {
@@ -233,7 +249,7 @@ const isArray = (item) => {
  * @param      {argument}  args    The arguments
  * @return     {Array<any>}      Array type arguments
  */
-var argumentsToArray = function (args) {
+var argumentsToArray = function argumentsToArray(args) {
   var retArr = [];
   for (var i = 0; i < args.length; i++) {
     retArr.push(args[i]);
@@ -247,7 +263,7 @@ var argumentsToArray = function (args) {
 * @param      {Array<any>}  arr    Array with duplicate items
 * @return     {Array<any>}  Array without duplicate items.
 */
-var removeDuplicates = function (arr) {
+var removeDuplicates = function removeDuplicates(arr) {
   var retArr = [];
   arr.forEach(function (elem) {
     if (retArr.indexOf(elem) == -1) {
@@ -257,15 +273,16 @@ var removeDuplicates = function (arr) {
   return retArr;
 };
 
-const Utilify = {
-  UUID_NIL, EnumGenerator, getCurrentEpochTime, CacheMgr, clone, deepCopy, copy, defaultsGenerator,
-  EventManager,
-  isNumber, isFunction, isString, isBoolean, isArray,
-  argumentsToArray, removeDuplicates, Ajax
+var Utilify = {
+  UUID_NIL: UUID_NIL, EnumGenerator: EnumGenerator, getCurrentEpochTime: getCurrentEpochTime, CacheMgr: CacheMgr, clone: clone, deepCopy: deepCopy, copy: copy, defaultsGenerator: defaultsGenerator,
+  EventManager: EventManager,
+  isNumber: isNumber, isFunction: isFunction, isString: isString, isBoolean: isBoolean, isArray: isArray,
+  argumentsToArray: argumentsToArray, removeDuplicates: removeDuplicates, Ajax: Ajax
 };
 
-if (typeof module != void 0) {
+if (typeof module != "undefined") {
   module.exports = Utilify;
-} else if (typeof window != void 0) {
+}
+if (typeof window != "undefined") {
   window.Utilify = Utilify;
 }
