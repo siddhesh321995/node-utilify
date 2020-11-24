@@ -194,30 +194,40 @@ EventManager.off = function (context, eventName, callback) {
 /**
  * Returns true if parameter is number.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = 10; isNumber(myVar); // true
  */
 const isNumber = (item) => { return typeof item == 'number'; };
 
 /**
  * Returns true if parameter is function.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = "str"; isFunction(myVar); // false
  */
 const isFunction = (item) => { return typeof item == 'function'; };
 
 /**
  * Returns true if parameter is string.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = "str"; isString(myVar); // true
  */
 const isString = (item) => { return typeof item == 'string'; };
 
 /**
  * Returns true if parameter is boolean.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = 10; isBoolean(myVar); // false
  */
 const isBoolean = (item) => { return typeof item == 'boolean'; };
 
 /**
  * Returns true if parameter is an array.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = []; isArray(myVar); // true
  */
 const isArray = (item) => {
   if (typeof Array.isArray == 'function') {
@@ -244,8 +254,8 @@ var argumentsToArray = function (args) {
 /**
 * Removes duplicates elements in array.
 *
-* @param      {Array<any>}  arr    Array with duplicate items
-* @return     {Array<any>}  Array without duplicate items.
+* @param      {Array<T>}  arr    Array with items of type T, having duplicate items
+* @return     {Array<T>}  Array without duplicate items.
 */
 var removeDuplicates = function (arr) {
   var retArr = [];

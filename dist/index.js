@@ -202,6 +202,8 @@ EventManager.off = function (context, eventName, callback) {
 /**
  * Returns true if parameter is number.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = 10; isNumber(myVar); // true
  */
 var isNumber = function isNumber(item) {
   return typeof item == 'number';
@@ -210,6 +212,8 @@ var isNumber = function isNumber(item) {
 /**
  * Returns true if parameter is function.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = "str"; isFunction(myVar); // false
  */
 var isFunction = function isFunction(item) {
   return typeof item == 'function';
@@ -218,6 +222,8 @@ var isFunction = function isFunction(item) {
 /**
  * Returns true if parameter is string.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = "str"; isString(myVar); // true
  */
 var isString = function isString(item) {
   return typeof item == 'string';
@@ -226,6 +232,8 @@ var isString = function isString(item) {
 /**
  * Returns true if parameter is boolean.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = 10; isBoolean(myVar); // false
  */
 var isBoolean = function isBoolean(item) {
   return typeof item == 'boolean';
@@ -234,6 +242,8 @@ var isBoolean = function isBoolean(item) {
 /**
  * Returns true if parameter is an array.
  * @param {any} item parameter to check.
+ * @returns {boolean}
+ * @example var myVar = []; isArray(myVar); // true
  */
 var isArray = function isArray(item) {
   if (typeof Array.isArray == 'function') {
@@ -260,8 +270,8 @@ var argumentsToArray = function argumentsToArray(args) {
 /**
 * Removes duplicates elements in array.
 *
-* @param      {Array<any>}  arr    Array with duplicate items
-* @return     {Array<any>}  Array without duplicate items.
+* @param      {Array<T>}  arr    Array with items of type T, having duplicate items
+* @return     {Array<T>}  Array without duplicate items.
 */
 var removeDuplicates = function removeDuplicates(arr) {
   var retArr = [];

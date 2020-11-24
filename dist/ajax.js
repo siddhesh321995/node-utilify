@@ -16,6 +16,8 @@ var Ajax = {
    * @param {Object} data object payload to be sent to server.
    * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
    * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @returns {Promise<any>} Promise with response
+   * @example Ajax.put('//google.com').then(...).catch(...);
    */
   put: function put(url, data, onSuccess, onFail) {
     return new Promise(function (res, rej) {
@@ -44,6 +46,8 @@ var Ajax = {
    * @param {string} url URL for given request.
    * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
    * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @returns {Promise<any>} Promise with response
+   * @example Ajax.get('//google.com/users').then(...).catch(...);
    */
   get: function get(url, onSuccess, onFail) {
     return new Promise(function (res, rej) {
@@ -72,6 +76,8 @@ var Ajax = {
    * @param {Object} data object payload to be sent to server.
    * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
    * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @returns {Promise<any>} Promise with response
+   * @example Ajax.post('//google.com/users').then(...).catch(...);
    */
   post: function post(url, data, onSuccess, onFail) {
     return new Promise(function (res, rej) {
@@ -101,6 +107,8 @@ var Ajax = {
    * @param {Object} data object payload to be sent to server.
    * @param {(data: any) => undefined} onSuccess Optional, success callback for put operation.
    * @param {(data: any) => undefined} onFail Optional, error callback for put operation.
+   * @returns {Promise<any>} Promise with response
+   * @example Ajax.delete('//google.com/users').then(...).catch(...);
    */
   delete: function _delete(url, data, onSuccess, onFail) {
     return new Promise(function (res, rej) {

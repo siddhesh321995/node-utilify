@@ -8,7 +8,10 @@
     "build": "npm run babel && npm run browserify && npm run uglifyjs",
     "babel": "babel src -d dist",
     "browserify": "browserify dist/index.js -o dist/utilify.js",
-    "uglifyjs": "uglifyjs --compress --mangle --output dist/utilify.min.js -- dist/utilify.js"
+    "uglifyjs": "uglifyjs --compress --mangle --output dist/utilify.min.js -- dist/utilify.js",
+    "doc": "npm run documentmd && npm run documenthtml",
+    "documentmd": "documentation build src/index.js -f md -o DOCUMENTATION.md",
+    "documenthtml": "documentation build src/index.js -f html -o docs"
   },
   "files": [
     "src",
