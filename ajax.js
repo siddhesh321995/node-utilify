@@ -119,3 +119,9 @@ var Ajax = {
     });
   }
 };
+
+if (typeof module != void 0) {
+  module.exports = Ajax;
+} else if (typeof window != void 0) {
+  window.Ajax = Ajax;
+}
