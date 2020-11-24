@@ -20,6 +20,7 @@ Utilify.isArray([]); // true
 ```
 
 ## Recent addition in the library
+- Ajax: XHR wrapper for frontend.
 - EventManager: Custom event manager.
 
 ## Some sample functions
