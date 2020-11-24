@@ -1,3 +1,5 @@
+const Ajax = require('./ajax');
+
 /**
  * Null value for uuid
  */
@@ -259,7 +261,7 @@ const Utilify = {
   UUID_NIL, EnumGenerator, getCurrentEpochTime, CacheMgr, clone, deepCopy, copy, defaultsGenerator,
   EventManager,
   isNumber, isFunction, isString, isBoolean, isArray,
-  argumentsToArray, removeDuplicates
+  argumentsToArray, removeDuplicates, Ajax
 };
 
 if (typeof module != void 0) {
